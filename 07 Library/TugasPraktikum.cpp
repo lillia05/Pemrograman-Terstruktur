@@ -8,7 +8,8 @@ private:
     T tanggal, bulan, tahun;
 
 public:
-    umur(T tanggal, T bulan, T tahun) : tanggal(tanggal), bulan(bulan), tahun(tahun) {}
+    umur(T tanggal, T bulan, T tahun) : tanggal(tanggal), bulan(bulan), tahun(tahun) {
+    }
 
     T getTanggal() const {
         return tanggal;
@@ -34,7 +35,15 @@ public:
         this->tahun = tahun;
     }
 
-    void HitungUmur() const {
+    void HitungUmur() const;
+
+    static int HitungHari(T bulan, T tahun);
+
+    bool HitungKabisat();
+};
+
+template<class T>
+void umur<T>::HitungUmur() const {
         time_t now = time(0);
         tm* localTime = localtime(&now);
         int tahunNow = 1900 + localTime->tm_year;
@@ -56,7 +65,8 @@ public:
         cout << "Umur Anda adalah " << Tahun << " tahun, " << Bulan << " bulan, " << Hari << " hari." << endl;
     }
 
-    static int HitungHari(T bulan, T tahun) {
+template<class T>
+int umur<T>::HitungHari(T bulan, T tahun) {
         if (bulan == 2) {
             if ((tahun % 4 == 0 && tahun % 100 != 0) || (tahun % 400 == 0)) {
                 return 29;
@@ -70,7 +80,8 @@ public:
         }
     }
 
-    bool HitungKabisat() const {
+template<class T>
+bool umur<T>::HitungKabisat() {
         if (tahun % 4 == 0) {
             if (tahun % 100 == 0) {
                 if (tahun % 400 == 0) {
@@ -85,7 +96,6 @@ public:
             return false;
         }
     }
-};
 
 int main() {
     int tanggal, bulan, tahun;
