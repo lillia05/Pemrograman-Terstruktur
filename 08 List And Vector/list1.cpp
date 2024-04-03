@@ -30,13 +30,13 @@ int main(){
     angka.pop_back();
 
     // menghitung ukuran list
-    cout << angka.size();
+    cout << angka.size() <<endl;
 
     // mengecek apakah list kosong
     if(angka.empty())
-        cout << "kosong";
+        cout << "kosong" <<endl;
     else    
-        cout << "berisi;";
+        cout << "berisi;" <<endl;
     
     // mengganti elemen dg elemen basic_streambu
     angka.assign(3,0);
@@ -55,4 +55,16 @@ int main(){
     list<int>::iterator it = angka.begin();
     advance(it, 2);
     cout << *it;
+
+    // // menghapus elemen pada posisi tertentu
+    list<int>::iterator it = angka.begin();
+    ++it;
+    angka.erase(it);
+
+    // menghapus semua elemen pada list dengan nilai tertentu
+    angka.remove(2);
+
+    // menghapus seluruh elemen dalam list sehingga list menjadi kosong
+    angka.clear();
+    cout << angka.size();
 }
