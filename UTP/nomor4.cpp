@@ -42,7 +42,7 @@ class Kite{
             Tm vertikal = diagonal1-horizontal;
             Tm sisiMiring1 = sqrt(pow(horizontal, 2)+pow(horizontal, 2));
             Tm sisiMiring2 = sqrt(pow(horizontal, 2)+pow(vertikal, 2));
-            Tm keliling = (horizontal * 2) + (vertikal * 2);
+            Tm keliling = (sisiMiring1 * 2) + (sisiMiring2 * 2);
             return keliling;
         }
 
